@@ -22,7 +22,7 @@
 			/ Header
 			%header#header.alt
 				%h1
-					%a{:href => "/"} Bitcoin is Good!
+					= yield :nav_title
 				%nav#nav
 					%ul
 						%li.special
@@ -31,14 +31,14 @@
 							#menu
 								%ul
 									%li
-										%a{:href => "index.html"} 首頁
+										=link_to '首頁', root_path
 									%li
 										%a{:href => "generic.html"} Generic
 									%li
 										%a{:href => "elements.html"} Elements
 									- if user_signed_in?
 										%li
-											= link_to '主控台', '#'
+											= link_to '主控台', '/dashboard'
 										%li
 											%br/
 											= button_to '登出', destroy_user_session_path, method: :delete

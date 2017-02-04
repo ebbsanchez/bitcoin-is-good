@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   scope '/dashboard' do
   	get '', to: 'dashboard#home'
-  	get '', to: 'dashboard#balance'
+  	get '/upgrade', to: 'dashboard#upgrade_page'
+  	post '/upgrade', to: 'dashboard#upgrade'
+
   end
   root 'static#welcome'
 end

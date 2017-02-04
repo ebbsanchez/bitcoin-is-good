@@ -12,15 +12,92 @@
  *
 
  *= require font-awesome
- *= require_self
  *= require_directory ./spectral
+ *= require_self
  */
 
 
-@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Lato:100');
 
 #login-page {
 	display: flex;
 	height: 100vh;
 	align-items: center;
+}
+// dashboard
+.inner {
+	padding: 2.5em;
+	max-width: 70em;
+	margin: 0 auto;
+}
+//cards
+.cards {
+	margin: 0 0 0 -1.25em;
+}
+//short-cards
+.card-style1,
+.card-style1 h3	 {
+	color: #5a5a5a;
+}
+.card-style1 {
+	padding: 0;
+	margin: 1.25em 0 0 1.25em;
+	width: calc(33.33333% - 1.25em)
+}
+// for numeric price
+.card-style1 h1.card-number {
+	color: #5a5a5a;
+	font-size: 40px;
+	font-weight: 300;
+	font-family: 'Lato', sans-serif;
+	letter-spacing: 0em;
+	margin: 0;
+}
+//long-cards
+.card-style2,
+.card-style2 h3	 {
+	color: #5a5a5a;
+}
+.card-style2 {
+	padding: 0;
+	margin: 1.25em 0 0 1.25em;
+	width: calc(66.666666% - 1.25em)
+}
+
+
+//user info
+#user-info {
+	color: #000000;
+	background-color: rgba(255,255,255,0.6);
+	margin: 3em auto;
+	width: 50em;
+	border-radius: 5px;
+	.info {
+	font-size: 1.5em;
+	line-height: 1.5em;
+	padding: 1em;
+	}
+}
+
+
+// fix bootstrap & spectral conflict
+a:focus, a:hover {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.temp-color-bg {
+	background-color: #cf4b5e;
+	height: 12.5em;
+	border-radius: 5px;
+}
+.button.smaller {
+	font-size:0.7em;
+	line-height:2em;
+	height:2em;
+	padding:0 0.5em 0 0.6em;
+	margin:0 0 0 1em;
+}
+input[type="checkbox"]{
+	margin: 0.4em 1em;
 }

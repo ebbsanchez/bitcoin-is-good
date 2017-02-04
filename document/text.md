@@ -61,8 +61,14 @@ Not everyone in the world has access to traditional banking services, but everyo
 # 趣味性
 * 交友遊戲？
 * 動態時報，用很多賺到錢的通知分享
+	* 跑馬燈  	
+* 賽季排行
+* 賽季獎勵
+* 本日排行
+* 本週排行
 
 #User
+
 ##User panel
 * 名字
 * email

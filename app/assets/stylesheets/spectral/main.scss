@@ -1,3 +1,4 @@
+@import "bootstrap";
 @import 'font-awesome.min.css';
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
 
@@ -1752,14 +1753,14 @@
 
 	input[type="checkbox"],
 	input[type="radio"] {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
+		// -moz-appearance: none;
+		// -webkit-appearance: none;
+		// -ms-appearance: none;
+		// appearance: none;
 		display: block;
 		float: left;
 		margin-right: -2em;
-		opacity: 0;
+		// opacity: 0;
 		width: 1em;
 		z-index: -1;
 	}

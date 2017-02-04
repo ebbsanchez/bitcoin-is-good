@@ -1,0 +1,16 @@
+.inner
+	升級到#{@upgrade_level}級 須支付 #{@upgrade_level*50} 給 #{@upgrade_level}級導師
+	%br/
+	而你將獲得來自#{@upgrade_level}級學徒的教導金
+	目前累積的#{@upgrade_level}級教導金：#{(current_user.lv4_pool*@TWDbit).round}元
+	- if current_user.level == 0
+		=simple_form_for current_user, url: "/dashboard/upgrade", method: :post do |f|
+			= f.input :tutor
+			= f.input :payed, :as => :boolean, :input_html => { :checked => "checked" }
+			= f.submit "升級"
+	-else
+		=simple_form_for current_user, url: "/dashboard/upgrade", method: :post do |f|
+			= f.input :tutor
+			= f.input :payed, :as => :boolean, :input_html => { :checked => "checked" }
+			= f.submit "升級"
+			

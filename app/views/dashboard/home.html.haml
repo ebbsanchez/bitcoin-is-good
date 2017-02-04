@@ -1,20 +1,67 @@
+:javascript
+  $('header').removeClass('alt');
+=content_for :nav_title do
+  =link_to 'Dashboard', '/dashboard'
 
-#dashboard.wrapper.style1.alt
-	.inner
-		%header.major
-			%h2 Dashboard
-email:
-= current_user.email
 %br/
 
-username:
-= current_user.username
-%br/
-line:
-= current_user.line_id
-%br/
-level:
-= current_user.level
-%br/
-balance:
-= current_user.balance
+.inner
+  / row-1 user info
+  #user-info.row
+    / user vector
+    .temp-color-bg.img-rounded.col-md-3
+    / word info
+    .col-md-9.col-sm-12.info
+      @#{current_user.username}
+      %br/
+      等級 #{current_user.level}
+      =link_to '升級到'+(current_user.level+1).to_s+'級', '/dashboard/upgrade', class: "button special smaller"
+      %br/
+      =link_to '推薦碼', '#'
+
+  / cards row 1
+  .row.cards
+    / card 1 - BTC balance
+    .card.card-style1
+      .card-header
+        比特幣
+        %span.badge.badge-warning.float-right BTC
+      .card-block
+        %h1.card-number.card-text
+          #{current_user.balance}
+      .card-block
+        %a.card-link{:href => "#"} 提領
+    / card 2 - NTD balance
+    .card.card-style1
+      .card-header
+        總資產
+        %span.badge.badge-info.float-right TWD
+      .card-block
+        %h1.card-number.card-text #{(current_user.balance * @TWDbit).round}
+      .card-block
+        %i.fa.fa-btc
+        1:#{@USDbit}美元(#{@TWDbit}台幣)
+    / card 3
+    .card.card-style1
+      .card-header 下線人數
+      .card-block
+        %h1.card-number.card-text 100
+  / cards row 2
+  .row.cards
+    .card.card-style2
+      .card-header 每日收益圖
+      .card-block 1
+      .card-block 2
+      .card-block 3
+      .card-block 4
+    .card.card-style1
+      .card-header 今日收入
+      .card-block
+        %h1.card-number.card-text 300
+      .card-header 本月收入
+      .card-block
+        %h1.card-number.card-text 5000
+  .row.cards
+    .card.card-style1
+      .card-header 排行榜
+      .card-block

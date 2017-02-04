@@ -11,29 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129144646) do
+ActiveRecord::Schema.define(version: 20170203142108) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.integer  "user_id"
+    t.float    "balance"
+    t.integer  "referral"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date     "date"
+  end
+
+  add_index "days", ["user_id"], name: "index_days_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                            default: "",  null: false
+    t.string   "encrypted_password",               default: "",  null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                    default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.integer  "level"
-    t.integer  "balance"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.integer  "level",                            default: 0
+    t.float    "balance",                          default: 0.0
     t.text     "line_id"
     t.text     "username"
-    t.integer  "tutor_id"
+    t.integer  "tutor_id",               limit: 2
+    t.float    "lv1_pool",                         default: 0.0
+    t.float    "lv2_pool",                         default: 0.0
+    t.float    "lv3_pool",                         default: 0.0
+    t.float    "lv4_pool",                         default: 0.0
+    t.float    "lv5_pool",                         default: 0.0
+    t.float    "lv6_pool",                         default: 0.0
+    t.float    "lv7_pool",                         default: 0.0
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "days", "users"
 end
