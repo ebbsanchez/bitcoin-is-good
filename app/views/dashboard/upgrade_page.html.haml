@@ -13,4 +13,11 @@
 			= f.input :tutor
 			= f.input :payed, :as => :boolean, :input_html => { :checked => "checked" }
 			= f.submit "升級"
-			
+	price: #{@coinbase.buy_price}
+	%br/
+	account: #{@coinbase.accounts}
+	%br/
+	- account = @coinbase.account("383b7c1e-0381-5a2c-9e54-d716236d87e0")
+	address: #{account.addresses}
+	=account.request(to: 'evo@gms.tku.edu.tw', amount: "8.0", currency: "USD", description: "Hi wala!")
+

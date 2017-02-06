@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
 	end
 	def upgrade_page
 		@upgrade_level = current_user.level + 1
+		@coinbase = Rails.configuration.coinbase
 	end
 
 	def upgrade

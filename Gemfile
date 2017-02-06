@@ -21,6 +21,8 @@ gem 'simple_form'
 gem "font-awesome-rails"
 # for live http request
 gem 'httparty'
+# bitcoin payment
+gem 'coinbase'
 
 group :development, :test do
   gem 'byebug'
