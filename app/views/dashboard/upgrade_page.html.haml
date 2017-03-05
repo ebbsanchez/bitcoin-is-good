@@ -1,23 +1,11 @@
-.inner
-	升級到#{@upgrade_level}級 須支付 #{@upgrade_level*50} 給 #{@upgrade_level}級導師
+#upgrade-page.inner
+	%h1 升級到#{@upgrade_level}級
+	%b 須支付 #{@upgrade_level*50}元 給 #{@upgrade_level}級導師：#{@tutor.username} (#{@tutor.email})
+	%br/
 	%br/
 	而你將獲得來自#{@upgrade_level}級學徒的教導金
-	目前累積的#{@upgrade_level}級教導金：#{(current_user.lv4_pool*@TWDbit).round}元
-	- if current_user.level == 0
-		=simple_form_for current_user, url: "/dashboard/upgrade", method: :post do |f|
-			= f.input :tutor
-			= f.input :payed, :as => :boolean, :input_html => { :checked => "checked" }
-			= f.submit "升級"
-	-else
-		=simple_form_for current_user, url: "/dashboard/upgrade", method: :post do |f|
-			= f.input :tutor
-			= f.input :payed, :as => :boolean, :input_html => { :checked => "checked" }
-			= f.submit "升級"
-	price: #{@coinbase.buy_price}
+	%br/	
+	目前累積的#{@upgrade_level}級教導金：#{(@pool_money*@TWDbit).round}元
 	%br/
-	account: #{@coinbase.accounts}
 	%br/
-	- account = @coinbase.account("383b7c1e-0381-5a2c-9e54-d716236d87e0")
-	address: #{account.addresses}
-	=account.request(to: 'evo@gms.tku.edu.tw', amount: "8.0", currency: "USD", description: "Hi wala!")
-
+	=link_to '現在支付','/dashboard/upgrade_check', class: 'button'

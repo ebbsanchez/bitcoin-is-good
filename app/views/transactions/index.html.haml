@@ -1,0 +1,35 @@
+.inner
+	- @adrs.all.each do |adr|
+		日期: #{adr.created_at}
+		%br/
+		描述: #{adr.usage}
+		%br/
+		金額: #{adr.twd_amount}
+		%br/
+		幣值: #{adr.btc_amount}
+		%br/
+		已收到: #{adr.btc_recieved}
+		%br/
+		狀態: #{adr.status}
+		%br/
+		%br/
+		=link_to '詳細資料', transaction_path(adr), class: 'button button-default'
+		%br/
+		%hr/
+/ .inner
+/ 	-if Rails.env.development?
+/ 		%h2 All transaction
+/ 		- @addresses.each do |adr|
+/ 			%hr/
+/ 			address: #{adr.address}
+/ 			%br/
+/ 			- adr.transactions.each do |transaction|
+/ 				ID: #{transaction['id']}
+/ 				%br/
+/ 				Type: #{transaction['type']}
+/ 				%br/
+/ 				status: #{transaction['status']}
+/ 				%br/
+/ 				amount: #{transaction['amount']['amount']}-#{transaction['amount']['currency']}
+/ 				%br/
+

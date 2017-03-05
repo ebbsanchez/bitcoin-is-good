@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  twd_amount: 1
+  btc_amount: 
+  btc_amount_expired: 2017-02-06 16:19:56
+  complete: false
+  pending: false
+  btc_recieved: 
+
+two:
+  user_id: 
+  twd_amount: 1
+  btc_amount: 
+  btc_amount_expired: 2017-02-06 16:19:56
+  complete: false
+  pending: false
+  btc_recieved: 

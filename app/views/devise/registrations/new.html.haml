@@ -4,10 +4,13 @@
 		= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
 			= f.error_notification
 			.form-inputs
-				= f.input :email, required: true, autofocus: true
-				= f.input :username, required: true, as: :string
-				= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-				= f.input :password_confirmation, required: true
+				= f.input :email, required: true, label: "電子信箱", autofocus: true
+				= f.input :username, required: true, label: "使用者名稱", as: :string
+				= f.input :password, required: true, label: "密碼", hint: ("大於 #{@minimum_password_length} 個英文字母" if @minimum_password_length)
+				= f.input :password_confirmation, required: true, label: "密碼確認"
+				%br/
 			.form-actions
 				= f.button :submit, "Sign up"
 		= render "devise/shared/links"
+		%br/
+		%br/

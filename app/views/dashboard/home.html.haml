@@ -1,23 +1,53 @@
+/ this is hack, wait to improve
 :javascript
   $('header').removeClass('alt');
 =content_for :nav_title do
   =link_to 'Dashboard', '/dashboard'
 
 %br/
-
 .inner
   / row-1 user info
   #user-info.row
     / user vector
-    .temp-color-bg.img-rounded.col-md-3
+    =image_tag gravatar_url(@user.email, '200'),alt: 'head', class: "img-rounded col-md-3"
     / word info
     .col-md-9.col-sm-12.info
-      @#{current_user.username}
+      @#{@user.username}
+      %br/
+      #{@user.email}
       %br/
       等級 #{current_user.level}
-      =link_to '升級到'+(current_user.level+1).to_s+'級', '/dashboard/upgrade', class: "button special smaller"
+      -if current_user.level != 7
+        =link_to '升級到'+(current_user.level+1).to_s+'級', '/dashboard/upgrade', class: "button special smaller"
+      -else
+        %span.badge.badge-success 頂級會員
       %br/
-      =link_to '推薦碼', '#'
+      .action-box
+        =link_to '推薦碼', '#', id: 'referral-btn'
+        %br/
+        %span#referral-page.hidden
+          %a{:href => "http://#{request.domain}#{":3000" if Rails.env.development?}/dashboard/get_tutor?tutor_email=#{@user.email}"}=request.domain + '/dashboard/get_tutor?tutor_email=' + @user.email
+  - if flash[:notice] || flash[:error]
+    -if flash[:notice]
+      .alert.alert-warning #{flash[:notice]}
+    -else
+      .alert.alert-warning #{flash[:error]}
+
+  / transaction notice
+  .inner.notice
+    - @user.addresses.all.each do |adr|
+      - if adr.status == 'waiting'
+        .alert.alert-warning
+          =link_to '尚有一筆%i元的交易付款中' % adr.twd_amount,transaction_path(adr)
+      - elsif adr.status == 'pending'
+        .alert.alert-warning
+          =link_to '一筆%i元的交易確認中..' % adr.twd_amount,transaction_path(adr)
+      - elsif adr.status == 'complete'
+        -if adr.notice == true
+          .alert.alert-warning
+            =link_to '一筆%i元的交易完成！成功升級。' % adr.twd_amount, transaction_path(adr)
+            -adr.notice = false
+            -adr.save
 
   / cards row 1
   .row.cards
@@ -45,23 +75,34 @@
     .card.card-style1
       .card-header 下線人數
       .card-block
-        %h1.card-number.card-text 100
+        %h1.card-number.card-text= @user.students.count
+      .card-block
+        =link_to '好友列表', '/dashboard/social'
   / cards row 2
   .row.cards
     .card.card-style2
       .card-header 每日收益圖
-      .card-block 1
-      .card-block 2
-      .card-block 3
-      .card-block 4
+      .card-block
+        = line_chart @weekly_data, label: "收入", curve: false, xtitle: "日期", ytitle: "收入"
     .card.card-style1
       .card-header 今日收入
       .card-block
-        %h1.card-number.card-text 300
+        %h1.card-number.card-text= @day_earn
       .card-header 本月收入
       .card-block
-        %h1.card-number.card-text 5000
-  .row.cards
-    .card.card-style1
-      .card-header 排行榜
-      .card-block
+        %h1.card-number.card-text= @month_earn
+  / .row.cards
+  /   .card.card-style1
+  /     .card-header 排行榜
+  /     .card-block
+
+
+
+:javascript
+  $('#referral-btn').click(function(){
+    if($('#referral-page').hasClass('hidden')){
+      $('#referral-page').removeClass('hidden')
+    } else {
+      $('#referral-page').addClass('hidden')
+    };
+  });

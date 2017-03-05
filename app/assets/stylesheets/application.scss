@@ -19,6 +19,59 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lato:100');
 
+
+// media width variable
+
+$pc-media:960px;
+$pcs-media:959px;
+$pad-media:760px;
+$pads-media:759px;
+$phone-media:480px;
+$phones-media:479px;
+
+/*把變數帶入mixin中，此mixin只就單純把media queries寫到我的mixin中，
+並且使用我上面設立的變數來調動media queries的width*/
+
+//電腦
+ @mixin pc-width() {
+  @media all and (min-width: $pc-media) {
+               @content;
+         }
+    }
+//平板
+ @mixin pad-width() {
+		@media all and (min-width:$pad-media) and (max-width: $pcs-media) {
+                @content;
+          }
+}
+//小平板
+ @mixin small-pad-width() {
+        @media all and (min-width: $phone-media) and (max-width:$pads-media) {
+                @content;
+          }
+ }
+//手機
+ @mixin phone-width() {
+        @media all and (max-width: $phones-media) {
+                @content;
+          }
+ }
+
+* {
+	-webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+h1 {
+	font-size: 2em;
+	@include phone-width {
+		font-size: 1.5em;
+	}
+}
+
+#notice {
+	margin-top: 3em;
+}
 #login-page {
 	display: flex;
 	height: 100vh;
@@ -29,10 +82,16 @@
 	padding: 2.5em;
 	max-width: 70em;
 	margin: 0 auto;
+	@include phone-width {
+		padding: 0.5em;
+	}
 }
 //cards
 .cards {
 	margin: 0 0 0 -1.25em;
+	@include phone-width {
+		margin: 0;
+	}
 }
 //short-cards
 .card-style1,
@@ -42,7 +101,11 @@
 .card-style1 {
 	padding: 0;
 	margin: 1.25em 0 0 1.25em;
-	width: calc(33.33333% - 1.25em)
+	width: calc(33.33333% - 1.25em);
+	@include phone-width {
+		width: 100%;
+		margin: 1.25em auto 0 auto;
+	}
 }
 // for numeric price
 .card-style1 h1.card-number {
@@ -61,10 +124,41 @@
 .card-style2 {
 	padding: 0;
 	margin: 1.25em 0 0 1.25em;
-	width: calc(66.666666% - 1.25em)
+	width: calc(66.666666% - 1.25em);
+	@include phone-width {
+		width: 100%;
+		margin: 1.25em auto 0 auto;
+	}
 }
 
-
+// social page
+// card for 1/3 block
+//short-cards
+.card-style3,
+.card-style3 h3	 {
+	color: #5a5a5a;
+}
+.card-style3 {
+	padding: 0;
+	margin: 1.25em 0 0 1.25em;
+	width: calc(33.33333% - 1.25em);
+	background:transparent;
+	font-family: 'Lato', sans-serif;
+	border-radius: none;
+	border: 1px solid #fff;
+	font-size: 1.2em;
+	color: #fff;
+	.card-header {
+		background-color: transparent;
+	}
+	@include phone-width {
+		width: 100%;
+		margin: 1.25em auto 0 auto;
+	}
+}
+.small-padding {
+	padding: 0 1.25rem 0.5rem;
+}
 //user info
 #user-info {
 	color: #000000;
@@ -77,8 +171,32 @@
 	line-height: 1.5em;
 	padding: 1em;
 	}
+	@include phone-width {
+		width: 90%;
+	}
 }
 
+// dashboard#home - referral page
+.action-box {
+	position: relative;
+}
+#referral-page {
+	position: absolute;
+	top:2.5em;
+	left:2px;
+	width:100%;
+	height: 0;
+	opacity:1;
+	transition: all 1s ease;
+	font-size:12px;
+	a{
+		width: 100%;
+	}
+}
+#referral-page.hidden{
+	opacity:0;
+	transition: all 1s ease;
+}
 
 // fix bootstrap & spectral conflict
 a:focus, a:hover {
@@ -86,10 +204,8 @@ a:focus, a:hover {
 	text-decoration: inherit;
 }
 
-.temp-color-bg {
-	background-color: #cf4b5e;
-	height: 12.5em;
-	border-radius: 5px;
+.row > img {
+	padding:0;
 }
 .button.smaller {
 	font-size:0.7em;
@@ -100,4 +216,27 @@ a:focus, a:hover {
 }
 input[type="checkbox"]{
 	margin: 0.4em 1em;
+}
+
+// transcations show & dashboard/pay
+#tran {
+	text-align: center;
+	height: 100vh;
+	min-height: 40em;
+}
+
+h3.slim {
+	font-weight: normal;
+	margin: 0;
+}
+
+// devise user edit
+#user-edit {
+	max-width: 30em;
+}
+.color-black { color: #000 !important;  }
+
+// /dashboard/upgrade
+#upgrade-page {
+	max-width: 50em;
 }

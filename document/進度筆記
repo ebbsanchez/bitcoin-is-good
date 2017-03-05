@@ -1,0 +1,9 @@
+
+
+RAILS 4->5
+undefined method `redirect_back'
+
+ - Automated Tasks with Cron and Rake
+ - [redirect_back](http://api.rubyonrails.org/classes/ActionController/Redirecting.html#method-i-redirect_to)
+ - [Updating to Rails 5.0](http://railsapps.github.io/updating-rails.html)
+ - [A Guide for Upgrading Ruby on Rails](http://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html)

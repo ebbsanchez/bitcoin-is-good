@@ -1,0 +1,36 @@
+%br/
+%header.inner
+	%h1 看看你的朋友們有多有錢！
+%section.inner
+	%h3 你的導師
+	.cards.row
+		- @tutors.each do |tutor|
+			.card.card-style3
+				.card-header
+					=image_tag gravatar_url(tutor.email, '100'),alt: '導師頭貼'
+					=tutor.username
+				.card-block.small-padding
+					#{tutor.email}
+					%br/
+					line: #{tutor.line_id}
+				.card-block
+					%i.fa.fa-btc
+					#{tutor.balance} / #{(tutor.balance * @TWDbit).round}twd
+
+%section.inner
+	%h3 一級學員
+	.cards.row
+		-@user.students.each_with_index do |student, index|
+			.card.card-style3
+				.card-header
+					=image_tag gravatar_url(student.email, '100'),alt: '學生頭貼'
+					#{student.username}
+				.card-block.small-padding
+					#{student.email}
+					%br/
+					line: #{student.line_id}
+				.card-block
+					%i.fa.fa-btc
+					#{student.balance} / #{(student.balance * @TWDbit).round}twd
+			%br/
+

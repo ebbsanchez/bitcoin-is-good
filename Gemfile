@@ -19,10 +19,18 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'will_paginate', '~> 3.1.0'
 gem 'simple_form'
 gem "font-awesome-rails"
+
 # for live http request
 gem 'httparty'
-# bitcoin payment
+
+# bitcoin wallet api
 gem 'coinbase'
+
+# Charting
+gem 'hightop'
+gem 'groupdate'
+gem 'active_median'
+gem "chartkick"
 
 group :development, :test do
   gem 'byebug'

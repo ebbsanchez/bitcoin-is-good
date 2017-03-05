@@ -15,10 +15,12 @@
 		= csrf_meta_tags
 	%body.landing
 		/ Page Wrapper
+		/ todo:
+		/ / - flash.each do |key,value|
+		/ #notice.alert.alert-warning
+		/ 	there is flash
+		/ 	/ = content_tag :div, value, class: 'flash #{key}'
 		#page-wrapper
-			/ .message
-			/   %p.notice= notice
-			/   %p.alert= alert
 			/ Header
 			%header#header.alt
 				%h1
@@ -32,13 +34,11 @@
 								%ul
 									%li
 										=link_to '首頁', root_path
-									%li
-										%a{:href => "generic.html"} Generic
-									%li
-										%a{:href => "elements.html"} Elements
 									- if user_signed_in?
-										%li
-											= link_to '主控台', '/dashboard'
+										%li= link_to '主控台', '/dashboard'
+										%li= link_to '修改個人資料', '/users/edit'
+										%li= link_to '升級紀錄', '/transactions'
+										%li= link_to '好友列表', '/dashboard/social'
 										%li
 											%br/
 											= button_to '登出', destroy_user_session_path, method: :delete
@@ -47,6 +47,7 @@
 											=link_to '註冊', new_user_registration_path
 										%li
 											=link_to '登入', new_user_session_path
+
 			= yield
 
 			/ Footer

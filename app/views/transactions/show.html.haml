@@ -1,0 +1,30 @@
+.inner#tran
+
+	%img{:src => "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{@address.address}?amount=#{@address.btc_amount}", :alt => ""}/
+	%br/
+	%h3.slim
+		#{@address.address}
+	- if @address.status == 'complete'
+		已收到: #{@address.btc_recieved}btc
+		%br/
+		%br/
+		%h3 付款已完成。
+		%br/
+
+
+	- elsif @address.status == 'waiting'
+		- if (@address.btc_pending + @address.btc_recieved) == @address.btc_amount
+			%h3 已收到比特幣，升級正在審核中..
+		- else
+			升級金額: #{@address.btc_amount}
+			%br/
+			已收到: #{@address.btc_pending+@address.btc_recieved}btc
+			%br/
+			請再發送 #{@address.btc_amount-(@address.btc_pending+@address.btc_recieved)} 比特幣到上面地址。
+			%br/
+
+
+
+	=link_to '回到主控台', '/dashboard', class: 'button button-default'
+
+

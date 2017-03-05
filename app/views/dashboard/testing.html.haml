@@ -1,0 +1,20 @@
+.inner
+	%h1 Chart testing
+	= line_chart @weekly_data
+	= @weekly_data
+	%h1 Address testing
+	-@addresses.each do |a|
+		-if a.to_id == @user.id
+			id:#{a.id} to:#{a.to_id} btc:#{a.btc_amount} date:#{a.created_at}
+	%h1 Days testing
+	Today:
+	%br/
+	-@days.each do |d|
+		-if d.date == Time.now.to_date
+			#{d.id}:#{d.user_id}:#{d.date}:#{d.balance}
+			%br/
+	All:
+	%br/
+	-@days.each do |d|
+		#{d.id}:#{d.user_id}:#{d.date}:#{d.balance}
+		%br/

@@ -1,0 +1,20 @@
+.inner#tran
+	%img{:src => "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=#{@address.address}?amount=#{@address.btc_amount}", :alt => ""}/
+	%h3.slim
+		#{@address.address}
+	%br/
+	現在匯率
+	%br/
+	1比特幣：#{@USDbit}美元：#{@TWDbit} 台幣
+	%br
+	您需支付#{@address.twd_amount}台幣 = #{@address.btc_amount} 比特幣
+	%br/
+	.alert.alert-warning
+		請於15分鐘內傳送剛好數量的比特幣至指定地址。
+		%br/
+		若超過時間，價格會依匯率浮動而更改。
+
+
+
+	=simple_form_for current_user, url: "/dashboard/upgrade", method: :post do |f|
+		= f.submit "升級"

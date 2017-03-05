@@ -1,6 +1,10 @@
 = content_for :nav_title do
   %a{:href => "/"} Bitcoin is Good!
 / Banner
+- if flash[:notice] || flash[:error]
+  .inner.notice
+    .flash #{flash[:notice]}
+    .error #{flash[:error]}
 %section#banner
   .inner
     %h2 Bitcoin is Good!
