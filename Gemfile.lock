@@ -1,13 +1,3 @@
-GIT
-  remote: git://github.com/haml/html2haml.git
-  revision: b088874baa0806f4aa072107dfd7c888e6a56164
-  specs:
-    html2haml (2.1.0)
-      erubis (~> 2.7.0)
-      haml (~> 4.0)
-      nokogiri (>= 1.6.0)
-      ruby_parser (~> 3.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -159,8 +149,6 @@ GEM
     rdoc (4.3.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    ruby_parser (3.8.4)
-      sexp_processor (~> 4.1)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -171,7 +159,6 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sexp_processor (4.7.0)
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -223,7 +210,6 @@ DEPENDENCIES
   groupdate
   haml (~> 4.0, >= 4.0.7)
   hightop
-  html2haml!
   httparty
   jbuilder (~> 2.0)
   jquery-rails
@@ -238,6 +224,3 @@ DEPENDENCIES
   unicorn
   web-console (~> 2.0)
   will_paginate (~> 3.1.0)
-
-BUNDLED WITH
-   1.11.2

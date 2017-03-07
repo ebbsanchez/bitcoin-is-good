@@ -14,7 +14,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # basic
 gem 'devise', '~> 4.2'
 gem 'haml', '~> 4.0', '>= 4.0.7'
-gem 'html2haml', github: 'haml/html2haml'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'will_paginate', '~> 3.1.0'
 gem 'simple_form'
