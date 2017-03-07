@@ -26,7 +26,8 @@
         =link_to '推薦碼', '#', id: 'referral-btn'
         %br/
         %span#referral-page.hidden
-          %a{:href => "http://#{request.domain}#{":3000" if Rails.env.development?}/dashboard/get_tutor?tutor_email=#{@user.email}"}=request.domain + '/dashboard/get_tutor?tutor_email=' + @user.email
+          %a{:href => "http://#{request.domain}#{":3000" if Rails.env.development?}/dashboard/get_tutor?tutor_email=#{@user.email}"}
+            #{request.domain}/dashboard/get_tutor?tutor_email#{@user.email}
   - if flash[:notice] || flash[:error]
     -if flash[:notice]
       .alert.alert-warning #{flash[:notice]}
