@@ -15,11 +15,6 @@
 		= csrf_meta_tags
 	%body.landing
 		/ Page Wrapper
-		/ todo:
-		/ / - flash.each do |key,value|
-		/ #notice.alert.alert-warning
-		/ 	there is flash
-		/ 	/ = content_tag :div, value, class: 'flash #{key}'
 		#page-wrapper
 			/ Header
 			%header#header.alt
@@ -63,7 +58,7 @@
 						%a.icon.fa-instagram{:href => "#"}
 							%span.label Instagram
 					%li
-						%a.icon.fa-envelope-o{:href => "#"}
+						%a.icon.fa-envelope-o{:href => "mailto:bitcoinisgood@etlgr.com"}
 							%span.label Email
 				%ul.copyright
 					%li &copy; BitGood

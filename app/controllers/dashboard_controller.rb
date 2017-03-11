@@ -113,7 +113,12 @@ class DashboardController < ApplicationController
 	end
 
 	def social
+		if get_tutor(1) == nil
+			flash[:error] = "僅限等級1以上的使用者查看好友列表。"
+			redirect_to action: 'home'
+		end
 		@tutors = [get_tutor(1),get_tutor(2),get_tutor(3),get_tutor(4),get_tutor(5),get_tutor(6),get_tutor(7)]
+
 	end
 
 	def testing

@@ -9,7 +9,10 @@ class TransactionsController < ApplicationController
 
 	def show
 		@address = Address.find(params[:id])
-
+		if @address.user != current_user
+			flash[:error] = "無法查看。"
+			redirect_to controller: 'dashboard',action: 'home'
+		end
 		# # rake task will handle it
 		# # check if payment have payed.
 		# # coinbase

@@ -18,7 +18,10 @@
       賺取你的第一桶金。
     %ul.actions
       %li
-        %a.button.special{:href => "#"} 點此開始
+        - if user_signed_in?
+          =link_to '點此開始', '/dashboard', class: "button special"
+        - else
+          =link_to '點此開始', new_user_registration_path, class: "button special"
   %a.more.scrolly{:href => "#one"} Learn More
 / One
 %section#one.wrapper.style1.special
@@ -85,7 +88,10 @@
         賺取最多的錢。
     %ul.actions.vertical
       %li
-        %a.button.fit.special{:href => "#"} 現在開始
+        - if user_signed_in?
+          =link_to '現在開始', '/dashboard', class: "button fit special"
+        - else
+          =link_to '現在開始', new_user_registration_path, class: "button fit special"
       %li
         %a.button.fit{:href => "#"} 更多說明
 
