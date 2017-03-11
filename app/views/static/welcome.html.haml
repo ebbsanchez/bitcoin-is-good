@@ -1,5 +1,7 @@
 = content_for :nav_title do
-  %a{:href => "/"} Bitcoin is Good!
+  %a{:href => "/"}
+    Bitcoin is Good!
+    %span#nav-beta beta
 / Banner
 - if flash[:notice] || flash[:error]
   .inner.notice

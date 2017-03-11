@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 	before_action :get_btc_price
 	before_action :get_user
 	def home
-		# day earn
+		# day earn month earn
 		@day_earn = 0.0
 		@month_earn = 0.0
 		@user.addresses.each do |address|
@@ -48,6 +48,10 @@ class DashboardController < ApplicationController
 		@upgrade_level = @user.level + 1
 		@coinbase = Rails.configuration.coinbase
 		@tutor = get_tutor(@upgrade_level)
+		if @tutor == nil
+			flash[:error] = "無法升級，是否還沒找到導師？"
+			redirect_to action: 'home'
+		end
 		@pool_money = get_pool_money(@upgrade_level)
 	end
 

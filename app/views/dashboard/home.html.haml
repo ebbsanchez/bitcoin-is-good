@@ -2,8 +2,9 @@
 :javascript
   $('header').removeClass('alt');
 =content_for :nav_title do
-  =link_to 'Dashboard', '/dashboard'
-
+  %a{:href => "/dashboard"}
+    Dashboard
+    %span#nav-beta beta
 %br/
 .inner
   / row-1 user info
