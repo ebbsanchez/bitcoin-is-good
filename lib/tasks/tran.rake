@@ -18,7 +18,7 @@ namespace :tran do
 
 			# run through all transaction from address
 			puts "[*] Address id: #{address.id}, status: #{address.status}"
-			if address.status == 'waiting'						# Check the wating address
+			if address.status == 'waiting' || address.status == 'pending'						# Check the wating address
 				adr.transactions.each do |tran| 				# Check every transaction from address
 					if tran['status'] == 'completed'  			# Check if there is new income
 						puts "[complete] There is #{tran['amount']['amount']}btc complete!!"
@@ -33,7 +33,7 @@ namespace :tran do
 							puts "[!] Penging + recieved = btc_amount!!"
 							puts "[!] Extend the btc expired time!!"
 							address.btc_amount_expired = Time.now + 30 * 60
-							# address.save
+							address.status = 'pending'
 						end
 					end
 

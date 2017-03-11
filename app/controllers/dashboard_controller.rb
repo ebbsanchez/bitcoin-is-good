@@ -141,6 +141,10 @@ class DashboardController < ApplicationController
 		@resp = HTTParty.get("https://blockchain.info/ticker")
 		@USDbit = @resp["USD"]["15m"]
 		@TWDbit = @resp["TWD"]["15m"]
+		if @TWDbit == 0 || @USDbit == 0
+			flash[:error] = "暫時無法使用"
+			redirect_to action: 'home'
+		end
 	end
 
 	# methods
