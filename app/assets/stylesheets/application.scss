@@ -14,6 +14,7 @@
  *= require font-awesome
  *= require_directory ./spectral
  *= require_self
+ *= require static
  */
 
 
@@ -274,3 +275,4 @@ h3.slim {
 #upgrade-page {
 	max-width: 50em;
 }
+

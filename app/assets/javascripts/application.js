@@ -15,3 +15,4 @@
 //= require_self
 //= require Chart.bundle
 //= require chartkick
+//= require jquery.countdown.min

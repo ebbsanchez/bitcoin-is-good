@@ -1,3 +1,58 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100');
+
+
+// media width variable
+
+$pc-media:960px;
+$pcs-media:959px;
+$pad-media:760px;
+$pads-media:759px;
+$phone-media:480px;
+$phones-media:479px;
+
+/*把變數帶入mixin中，此mixin只就單純把media queries寫到我的mixin中，
+並且使用我上面設立的變數來調動media queries的width*/
+
+//電腦
+ @mixin pc-width() {
+  @media all and (min-width: $pc-media) {
+               @content;
+         }
+    }
+//平板
+ @mixin pad-width() {
+		@media all and (min-width:$pad-media) and (max-width: $pcs-media) {
+                @content;
+          }
+}
+//小平板
+ @mixin small-pad-width() {
+        @media all and (min-width: $phone-media) and (max-width:$pads-media) {
+                @content;
+          }
+ }
+//手機
+ @mixin phone-width() {
+        @media all and (max-width: $phones-media) {
+                @content;
+          }
+ }
+
+* {
+	-webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+#countdown {
+	font-size: 3em;
+	height: 1.5em;
+}
+.mobile-fix {
+	@include phone-width {
+		margin-top: 2.5em;
+	}
+}

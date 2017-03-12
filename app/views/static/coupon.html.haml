@@ -1,51 +1,54 @@
-.inner.full-height.center
-	%h1 BITCOIN IS GOOD! 免費滿級!
-	=image_tag 'money.jpg', class:'md-size'
-	%br/
-	%br/
-	.content
-		本網站的設立目的就是為了推動比特幣發展，只有越來越多人使用比特幣，相信比特幣，整個市場才可能蓬勃發展。
-		%br/
-		因此我們推出一百名的菁英計畫，前一百位申請帳號的用戶，都能免費升級為滿級。
-		%br/
-		%br/
+.inner.full-height.center.mobile-fix
+  %h1 BITCOIN IS GOOD! 免費滿級!
+  #countdown
+  =image_tag 'money.jpg', class:'md-size'
+  %br/
+  %br/
+  .content
+    本網站的設立目的就是為了推動比特幣發展，只有越來越多人使用比特幣，相信比特幣，整個市場才可能蓬勃發展。
+    %br/
+    因此我們推出一百名的菁英計畫，前一百位申請帳號的用戶，都能免費升級為滿級。
+    %br/
+    %br/
 
-		%h2 為什麼需要滿級？請看以下圖表
-		%br	
-		=image_tag 'bitcoinisgood10.jpg', class:'md-size'
-		%br/
-		=image_tag 'bitcoinisgood11.jpg', class:'md-size'
-		%br/
-		=image_tag 'bitcoinisgood12.jpg', class:'md-size'
-		%br/
-		=image_tag 'bitcoinisgood13.jpg', class:'md-size'
-		%br/
-		%br/
-		%h1 七級的收益
-		=image_tag 'bitcoinisgood15.jpg', class:'md-size'
-		%br/
-		如果沒有生成滿級，所賺到的錢都只是冰山一角，教導出去的學徒都無法發揮真正效益。
-		%br/
-		%br/
-		%h1 那就是浪費
-		.content.highlight
-			%h1 如何升級
-			%ol.fit
-				%li
-					1. 點此連結獲得帳號
-					=link_to '獲得帳號', '/users/sign_up?tutor=bitcoinisgood@etlgr.com', class: "button special"
-				%br/
-				%li
-					2.  追蹤
-					%a{:href => "https://www.instagram.com/bitcoin.is.good/"}bitcoin.is.good
-				%br/
-				%li
-					3. 在任何一篇文底下tag三位朋友
-					%br/
-					截圖完傳至IG小盒子。
+    %h2 為什麼需要滿級？請看以下圖表
+    %br 
+    =image_tag 'bitcoinisgood10.jpg', class:'md-size'
+    %br/
+    =image_tag 'bitcoinisgood11.jpg', class:'md-size'
+    %br/
+    =image_tag 'bitcoinisgood12.jpg', class:'md-size'
+    %br/
+    =image_tag 'bitcoinisgood13.jpg', class:'md-size'
+    %br/
+    %br/
+    %h1 七級的收益
+    =image_tag 'bitcoinisgood15.jpg', class:'md-size'
+    %br/
+    如果沒有生成滿級，所賺到的錢都只是冰山一角，教導出去的學徒都無法發揮真正效益。
+    %br/
+    %br/
+    %h1 那就是浪費
+    .content.highlight
+      %h1 如何升級
+      %ol.fit
+        %li
+          1. 點此連結獲得帳號
+          =link_to '獲得帳號', '/users/sign_up?tutor=bitcoinisgood@etlgr.com', class: "button special"
+        %br/
+        %li
+          2.  追蹤
+          %a{:href => "https://www.instagram.com/bitcoin.is.good/"}bitcoin.is.good
+        %br/
+        %li
+          3. 在任何一篇文底下tag三位朋友
+          %br/
+          截圖完傳至IG小盒子。
 
-				%h3 以上三點完成後，將由管理員幫您升成滿級！
+        %h3 以上三點完成後，將由管理員幫您升成滿級！
+  %br/
 
-
-
-	%br/
+:javascript
+  $('#countdown').countdown('2017/03/15', function(event) {
+    $(this).html(event.strftime('%d天%H:%M:%S'));
+  });
