@@ -13,8 +13,9 @@ Rails.application.routes.draw do
     post '/get_tutor', to: 'dashboard#assign_tutor'
     get 'social', to: 'dashboard#social'
     get '/test', to: 'dashboard#testing'
-
-
   end
+
+  get 'how', to: 'static#how'
   root 'static#welcome'
+
 end

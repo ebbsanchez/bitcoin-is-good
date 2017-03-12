@@ -4,67 +4,79 @@
 /  html5up.net | @ajlkn
 /  Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 %html
-	%head
-		%title BitGood
-		%meta{:charset => "utf-8"}/
-		%meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-		= javascript_include_tag 'application'
+  %head
+    %title BitGood
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application'
 
 
-		= csrf_meta_tags
-	%body.landing
-		/ Page Wrapper
-		#page-wrapper
-			/ Header
-			%header#header.alt
-				%h1
-					= yield :nav_title
-				%nav#nav
-					%ul
-						%li.special
-							%a.menuToggle{:href => "#menu"}
-								%span Menu
-							#menu
-								%ul
-									%li
-										=link_to '首頁', root_path
-									- if user_signed_in?
-										%li= link_to '主控台', '/dashboard'
-										%li= link_to '修改個人資料', '/users/edit'
-										%li= link_to '升級紀錄', '/transactions'
-										%li= link_to '好友列表', '/dashboard/social'
-										%li
-											%br/
-											= button_to '登出', destroy_user_session_path, method: :delete
-									- else
-										%li
-											=link_to '註冊', new_user_registration_path
-										%li
-											=link_to '登入', new_user_session_path
+    = csrf_meta_tags
+  %body.landing
+    / Page Wrapper
+    #page-wrapper
+      / Header
+      %header#header.alt
+        %h1
+          = yield :nav_title
+        %nav#nav
+          %ul
+            %li.special
+              %a.menuToggle{:href => "#menu"}
+                %span Menu
+              #menu
+                %ul
+                  %li
+                    =link_to '首頁', root_path
+                  - if user_signed_in?
+                    %li= link_to '主控台', '/dashboard'
+                    %li= link_to '修改個人資料', '/users/edit'
+                    %li= link_to '升級紀錄', '/transactions'
+                    %li= link_to '好友列表', '/dashboard/social'
+                    %li
+                      %br/
+                      = button_to '登出', destroy_user_session_path, method: :delete
+                  - else
+                    %li
+                      =link_to '註冊', new_user_registration_path
+                    %li
+                      =link_to '登入', new_user_session_path
 
-			= yield
+      = yield
 
-			/ Footer
-			%footer#footer
-				%ul.icons
-					%li
-						%a.icon.fa-telegram{:href => "#"}
-							%span.label Telegram
-					%li
-						%a.icon.fa-facebook{:href => "#"}
-							%span.label Facebook
-					%li
-						%a.icon.fa-instagram{:href => "#"}
-							%span.label Instagram
-					%li
-						%a.icon.fa-envelope-o{:href => "mailto:bitcoinisgood@etlgr.com"}
-							%span.label Email
-				%ul.copyright
-					%li &copy; BitGood
-					%li
-						Design:
-						%a{:href => "http://html5up.net"} HTML5 UP
+      / Footer
+      %footer#footer
+        %ul.icons
+          %li
+            %a.icon.fa-telegram{:href => "#"}
+              %span.label Telegram
+          %li
+            %a.icon.fa-facebook{:href => "#"}
+              %span.label Facebook
+          %li
+            %a.icon.fa-instagram{:href => "#"}
+              %span.label Instagram
+          %li
+            %a.icon.fa-envelope-o{:href => "mailto:bitcoinisgood@etlgr.com"}
+              %span.label Email
+        %ul.copyright
+          %li &copy; BitGood
+          %li
+            Design:
+            %a{:href => "http://html5up.net"} HTML5 UP
+
+- if Rails.env.production?
+  :javascript
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-74694826-2', 'auto');
+    ga('send', 'pageview');
+
+
 
 / Scripts
 = javascript_include_tag 'spectral/jquery.min.js'
