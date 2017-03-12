@@ -5,4 +5,6 @@ class StaticController < ApplicationController
 	end
 	def unavailable
 	end
+	def coupon
+	end
 end

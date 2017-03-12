@@ -71,11 +71,32 @@ h1 {
 
 // global
 .full-height {
-	height: 100vh;
+	min-height: 100vh;
 }
-.center {
-	text-align: center;
+.center {	text-align: center; }
+ol.fit {
+	li {
+		text-align: left;
+		display: inline-block;
+		margin: auto;
+		min-width: 20em;
+	}
 }
+
+img.full-size { width: 100%; }
+img.md-size { width: 70%; }
+.content {
+	background-color: rgba(0,0,0,0.5);
+	padding: 1em 0;
+}
+.highlight {
+	background-color: rgba(255,255,255,1);
+	color: #000;
+	h1,h2,h3,h4,h5,h6 {
+		color: #000;
+	}
+}
+
 // nav beta
 #nav-beta {
 	font-size: 0.5em;
