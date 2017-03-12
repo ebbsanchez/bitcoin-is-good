@@ -4,8 +4,12 @@
 		= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
 			= f.error_notification
 			.form-inputs
+				-if @tutor
+					%h3 導師：#{@tutor.username}
+					= f.input :tutor_id, required: true,input_html: {value: @tutor.id},as: :hidden
 				= f.input :email, required: true, label: "電子信箱", autofocus: true
 				= f.input :username, required: true, label: "使用者名稱", as: :string
+				= f.input :line_id, required: true, label: "Line ID", as: :string
 				= f.input :password, required: true, label: "密碼", hint: ("大於 #{@minimum_password_length} 個英文字母" if @minimum_password_length)
 				= f.input :password_confirmation, required: true, label: "密碼確認"
 				%br/

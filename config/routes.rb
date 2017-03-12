@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   resources :users, only: [:show]
   resources :transactions
 
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
     get '/test', to: 'dashboard#testing'
   end
 
+  get 'unavailable', to: 'static#unavailable'
   get 'how', to: 'static#how'
   root 'static#welcome'
 

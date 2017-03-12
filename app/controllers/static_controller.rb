@@ -3,6 +3,6 @@ class StaticController < ApplicationController
 	end
 	def how
 	end
-	def unavailavle
+	def unavailable
 	end
 end
