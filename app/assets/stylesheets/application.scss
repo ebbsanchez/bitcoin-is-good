@@ -109,7 +109,7 @@ img.md-size { width: 70%; }
 }
 #login-page {
 	display: flex;
-	height: 100vh;
+	min-height: 100vh;
 	align-items: center;
 }
 // dashboard
@@ -256,7 +256,7 @@ input[type="checkbox"]{
 // transcations show & dashboard/pay
 #tran {
 	text-align: center;
-	height: 100vh;
+	min-height: 100vh;
 	min-height: 40em;
 }
 
