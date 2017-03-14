@@ -32,6 +32,7 @@ gem 'groupdate'
 gem 'active_median'
 gem "chartkick"
 
+
 group :development, :test do
   gem 'byebug'
   gem "capistrano", "~> 3.7"
