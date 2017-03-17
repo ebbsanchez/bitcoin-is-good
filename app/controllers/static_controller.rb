@@ -7,4 +7,7 @@ class StaticController < ApplicationController
 	end
 	def coupon
 	end
+	def intro
+	end
+	
 end
