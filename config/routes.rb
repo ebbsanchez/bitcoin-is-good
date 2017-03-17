@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     get '/test', to: 'dashboard#testing'
   end
 
-  get 'coupon', to: "static#coupon"
+  get 'tutorial', to: 'static#tutorial'
+  get 'coupon',to: 'static#unavailable' # to: "static#coupon"
   get 'unavailable', to: 'static#unavailable'
   get 'how', to: 'static#how'
   root 'static#welcome'

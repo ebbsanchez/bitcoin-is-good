@@ -56,3 +56,35 @@ $phones-media:479px;
 		margin-top: 2.5em;
 	}
 }
+#tutorial {
+  h1 {
+    padding: 1em 0;;
+  }
+  h2 {
+    background-color: #21b2a6;
+    padding: 1.5em 1.5em;
+  }
+  h3 {
+    
+  }
+  ul { list-style: none; }
+  ol {
+    .red {
+      color: red;
+    }
+    li {
+      margin-bottom: 3em;
+    }
+    li.alt {
+      list-style: none;
+    }
+  }
+  img.style1 {
+    width: calc(33% - 1px);
+    vertical-align: top;
+  }
+  img.style2{ 
+    width: calc(49% - 1px); 
+    vertical-align: top;
+  }
+}
